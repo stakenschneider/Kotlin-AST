@@ -1,3 +1,3 @@
 package parser.token
 
-interface KtRightHandExpression {}
+interface KtRightHandExpression

@@ -1,5 +1,6 @@
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.model.MutableGraph
 import guru.nidi.graphviz.parse.Parser;
 import parser.common.KeywordDictionary.Companion.ARROW
 import parser.common.KeywordDictionary.Companion.ASSIGN
@@ -19,7 +20,8 @@ import parser.token.KtToken
 import java.nio.file.Paths
 import java.nio.file.Files
 
-class Drawer(val dots : MutableList<Pair<Int, List<String>>> = ArrayList(), val links: MutableList<Pair<String, String>> = ArrayList()) {
+class Drawer(private val dots : MutableList<Pair<Int, List<String>>> = ArrayList(),
+             private val links: MutableList<Pair<String, String>> = ArrayList()) {
 
     private val FILE_LOCATION: String = "src/main/resources/ast.dot"
     private val OUTPUT_LOCATION: String = "src/main/resources/output.svg"
@@ -28,7 +30,7 @@ class Drawer(val dots : MutableList<Pair<Int, List<String>>> = ArrayList(), val 
         this.prepareDrawingData(ast)
         this.generateASTDotFile()
         try {
-            val graph = Parser().read(File(FILE_LOCATION))
+            val graph : MutableGraph = Parser().read(File(FILE_LOCATION))
             Graphviz
                 .fromGraph(graph.setDirected(true))
                 .width(2500)
@@ -41,8 +43,8 @@ class Drawer(val dots : MutableList<Pair<Int, List<String>>> = ArrayList(), val 
     }
 
     private fun prepareDrawingData(node: KtToken) {
-        val dotId = node.tokenId
-        val label = mutableListOf(node.type.name)
+        val dotId : Int = node.tokenId
+        val label : MutableList<String> = mutableListOf(node.type.name)
         label.add(node.value)
         if (node.children.isNotEmpty()) {
             node.children.forEach { child ->

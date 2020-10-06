@@ -7,5 +7,4 @@ object FileLoader {
     fun getResourceName(path: String): String {
         return (object {}.javaClass.getResource(path).file).substringAfterLast('/')
     }
-
 }

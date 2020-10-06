@@ -1,6 +1,5 @@
 package parser.token
 
-
 import parser.common.IdGenerator
 import parser.common.KeywordDictionary.Companion.ASSIGN
 import parser.common.KeywordDictionary.Companion.IN
@@ -8,10 +7,9 @@ import parser.common.KeywordDictionary.Companion.SPACE
 import parser.common.KeywordDictionary.Companion.opRegEx
 import parser.common.KtType
 
-
 open class KtExpressionToken(override val value: String,
-                        var left : KtRightHandExpression? = null,
-                        var right : KtRightHandExpression? = null,
+                             var left : KtRightHandExpression? = null,
+                             private var right : KtRightHandExpression? = null,
                              override val children: MutableList<KtToken> = ArrayList(),
                              override val tokenId: Int = IdGenerator.generateId()) : KtToken, KtRightHandExpression {
     override fun addChild(token: KtToken) {
@@ -20,10 +18,7 @@ open class KtExpressionToken(override val value: String,
         children.add(token)
     }
 
-
-    constructor(value : String,
-                body : String
-    ) : this(value) {
+    constructor(value : String, body : String) : this(value) {
         when (value) {
             ASSIGN -> processAssign(ASSIGN.toRegex().split(body))
             IN -> processIn(" $IN ".toRegex().split(body, 2))

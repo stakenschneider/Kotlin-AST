@@ -1,11 +1,7 @@
 package parser.token
 
 import parser.common.IdGenerator
-import parser.common.KeywordDictionary
-import parser.common.KeywordDictionary.Companion.CB
 import parser.common.KeywordDictionary.Companion.ELSE
-import parser.common.KeywordDictionary.Companion.IF
-import parser.common.KeywordDictionary.Companion.OBF
 import parser.common.KtType
 import parser.common.ParserException
 import parser.defineBody

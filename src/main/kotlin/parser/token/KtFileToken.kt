@@ -11,9 +11,9 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class KtFileToken(override val value: String,
-                  val classes : MutableList<KtClassToken> = ArrayList(),
-                  val functions : MutableList<KtFunctionToken> = ArrayList(),
-                  val imports : MutableList<KtImportToken> = ArrayList(),
+                  private val classes : MutableList<KtClassToken> = ArrayList(),
+                  private val functions : MutableList<KtFunctionToken> = ArrayList(),
+                  private val imports : MutableList<KtImportToken> = ArrayList(),
                   override val children: MutableList<KtToken> = ArrayList(),
                   override val tokenId: Int = IdGenerator.generateId()) : KtToken {
     override val  type : KtType = KtType.FILE
@@ -31,12 +31,9 @@ class KtFileToken(override val value: String,
         }
     }
 
-    constructor (value: String,
-                 body : LinkedList<String>
-    ) : this(value) {
+    constructor (value: String, body : LinkedList<String>) : this(value) {
         processToken(body)
     }
-
 
     override fun addChild(token: KtToken) {
         when(token) {

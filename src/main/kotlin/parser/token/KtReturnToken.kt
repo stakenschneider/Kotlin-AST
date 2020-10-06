@@ -6,7 +6,7 @@ import parser.common.KtType
 import parser.common.ParserException
 
 class KtReturnToken (override val value : String,
-                     var returnVal : KtRightHandExpression? = null,
+                     private var returnVal : KtRightHandExpression? = null,
                      override val children: MutableList<KtToken> = ArrayList(),
                      override val tokenId: Int = IdGenerator.generateId()) : KtToken {
     override fun addChild(token: KtToken) {

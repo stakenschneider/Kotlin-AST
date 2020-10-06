@@ -1,13 +1,11 @@
 package parser.token
 
-
-
 import parser.common.IdGenerator
 import parser.common.KeywordDictionary.Companion.IMPORT
 import parser.common.KtType
 
 class KtImportToken(override val value : String = IMPORT,
-                    var statement : KtStatementToken? = null,
+                    private var statement : KtStatementToken? = null,
                     override val children: MutableList<KtToken> = ArrayList(),
                     override val tokenId: Int = IdGenerator.generateId()) : KtToken {
 

@@ -13,8 +13,8 @@ import java.util.*
 
 class KtIfToken(override val value : String,
                 var condition : KtExpressionToken? = null,
-                var ifBody : KtBodyToken? = null,
-                var elseBody: KtElseToken? = null,
+                private var ifBody : KtBodyToken? = null,
+                private var elseBody: KtElseToken? = null,
                 override val children: MutableList<KtToken> = mutableListOf(),
                 override val tokenId: Int = IdGenerator.generateId()) : KtToken {
     override fun addChild(token: KtToken) {

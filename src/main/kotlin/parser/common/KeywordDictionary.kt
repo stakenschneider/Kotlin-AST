@@ -1,11 +1,9 @@
 package parser.common
 
 class KeywordDictionary {
-    companion object  {
+    companion object {
         const val PLUS = "+"
         const val MINUS = "-"
-        const val INCR = "++"
-        const val DECR = "--"
         const val MULT = "*"
         const val DIV = "/"
         const val PROC = "%"
@@ -16,7 +14,6 @@ class KeywordDictionary {
         const val BREAK = "break"
         const val CONTINUE = "continue"
         const val FUN = "fun"
-        const val CLASS = "class"
         const val IMPORT = "import"
         const val OB = "("
         const val CB = ")"
@@ -40,13 +37,17 @@ class KeywordDictionary {
         const val UNDEFINED = "undefined"
         const val IN = "in"
         const val SPACE = " "
-        const val ARROW ="->"
+        const val ARROW = "->"
         const val NEXT_LINE = "\n"
         const val LABEL = "label"
         const val DIGRAPH = "digraph"
 
+//        const val CLASS = "class"
+//        const val INCR = "++"
+//        const val DECR = "--"
+
         val opRegEx = "$GT|$LT|[$MULT$PLUS$MINUS$DIV$PROC$LESSER$GREATER$EQ$NEQ]".toRegex()
         val controlFlowKeywords = "$RETURN|$BREAK|$CONTINUE".toRegex()
-        val breakKey = "$BREAK|$RETURN".toRegex()
+//        val breakKey = "$BREAK|$RETURN".toRegex()
     }
 }

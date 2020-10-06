@@ -21,8 +21,8 @@ class KtDeclarationToken(override val value: String,
 
     override val  type : KtType = KtType.DECL
 
-    constructor(value: String,
-                body: String) : this(value) {
-
-    }
+//    constructor(value: String,
+//                body: String) : this(value) {
+//
+//    }
 }

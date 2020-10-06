@@ -9,9 +9,9 @@ import parser.common.KtType
 import parser.common.ParserException
 
 class KtVarToken(override val value: String,
-                  var typeToken : KtTypeToken? = null,
-                  var variableType: KtVariableTypeToken? = null,
-                  var id : KtIdToken? = null,
+                 private var typeToken : KtTypeToken? = null,
+                 private var variableType: KtVariableTypeToken? = null,
+                 private var id : KtIdToken? = null,
                  override val children: MutableList<KtToken> = ArrayList(),
                  override val tokenId: Int = IdGenerator.generateId()) : KtToken, KtRightHandExpression{
     override val  type : KtType = KtType.VARIABLE
